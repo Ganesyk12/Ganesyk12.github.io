@@ -1,112 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <title>Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070b18" />
+    <title>Bekasi Explorer — 10 Tempat Instagramable</title>
+    <meta
+      name="description"
+      content="Jelajahi 10 tempat instagramable di Bekasi lewat antarmuka desktop interaktif."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%237c6cff'/%3E%3Cstop offset='.5' stop-color='%2359c3ff'/%3E%3Cstop offset='1' stop-color='%23ff8ac4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='26' fill='url(%23g)'/%3E%3Cpath d='M30 50l20-20 20 20-20 20z' fill='white' fill-opacity='.92'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
-    <header>
-      <nav>
-        <h2>10 Tempat Instagramable di Bekasi</h2>
-      </nav>
+  <body class="theme-dark os-mac">
+    <script>
+      // Terapkan tema & gaya OS sebelum konten dilukis agar tidak ada flash.
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("bekasi-theme");
+          const dark = savedTheme
+            ? savedTheme === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          document.body.classList.toggle("theme-dark", dark);
+          document.body.classList.toggle("theme-light", !dark);
+
+          const savedOs = localStorage.getItem("bekasi-os");
+          const windows = savedOs
+            ? savedOs === "windows"
+            : /Windows/i.test(navigator.userAgent);
+          document.body.classList.toggle("os-windows", windows);
+          document.body.classList.toggle("os-mac", !windows);
+        } catch (error) {
+          /* localStorage bisa diblokir; pakai nilai default */
+        }
+      })();
+    </script>
+
+    <!-- Latar desktop -->
+    <div class="wallpaper" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+
+    <!-- Menu bar -->
+    <header class="menubar">
+      <div class="menubar-group">
+        <button class="brand" type="button" data-action="open-first" aria-label="Buka Bekasi Explorer">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name"><strong>Bekasi</strong> Explorer</span>
+        </button>
+        <nav class="menubar-nav" aria-label="Menu aplikasi">
+          <button class="menu-link" type="button" data-action="open-first">Jelajahi</button>
+          <button class="menu-link" type="button" data-action="random">Acak</button>
+        </nav>
+      </div>
+
+      <div class="menubar-group menubar-right">
+        <button class="status-btn" type="button" data-action="toggle-theme" aria-label="Ganti tema" title="Ganti tema">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 14.4A8.5 8.5 0 0 1 9.6 4 8.5 8.5 0 1 0 20 14.4Z" />
+          </svg>
+        </button>
+        <button class="status-btn os-toggle" type="button" data-action="toggle-os" aria-label="Ganti gaya antarmuka" title="Ganti gaya antarmuka">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2.5" y="4" width="19" height="13" rx="2" />
+            <path d="M8 21h8M12 17v4" stroke-linecap="round" />
+          </svg>
+          <span class="os-label">macOS</span>
+        </button>
+        <time class="clock" id="clock">Memuat…</time>
+      </div>
     </header>
 
-    <main>
-      <article>
-        <!-- 1 -->
-        <h3>1. Rainbow Garden</h3>
-        <p>
-          Taman bunga yang indah dengan berbagai spot foto yang menarik. Alamat: Kavling Central Niaga VI, Blok SN 6-8 No.11, Jl. Harapan Indah Boulevard, Pusaka Rakyat, Kecamatan Tarumajaya, Bekasi, Jawa Barat. Jam buka: 11.00 – 22.00. HTM: Rp. 10.000.
-        </p>
-        <!-- 2 -->
-        <h3>2. Curug Parigi</h3>
-        <p>
-          Air terjun dengan keindahan alam yang memukau, dengan bentuk yang mirip Niagara Falls.  Alamat: Cikiwul, Bantar Gebang, Bekasi, Jawa Barat. Jam buka: 24 jam. HTM: Rp. 5.000.
-        </p>
-        <!-- 3 -->
-        <h3>3. Pantai Muara Beting</h3>
-        <p>
-          Pantai yang indah dengan ombak yang tidak terlalu besar, cocok untuk melepas penat sejenak. Alamat: Pantai Bahagia, Muara Gembong, Bekasi, Jawa Barat. Jam buka: 24 jam. HTM: Rp. 20.000.
-        </p>
-        <div class="frame">
-          <img src="https://pbs.twimg.com/media/EWueljMWkAA6l0K.jpg" alt="img-desk">
-          <div class="caption">Pantai Muara Beting.</div>
-        </div>
-        <br>
-        <!-- 4 -->
-        <h3>4. Piramida Terbalik Summarecon</h3>
-        <p>
-          Bangunan yang unik dengan arsitektur yang menarik. Alamat: Jl. Boulevard Ahmad Yani, Summarecon Bekasi, Bekasi, Jawa Barat. Jam buka: 10.00 – 22.00. HTM: Gratis
-        </p>
-        <br>
-        <!-- 5 -->
-        <h3>5. Find Out Coffee</h3>
-        <p>
-          Tempat kopi yang menawarkan suasana yang cozy dan instagramable. Alamat: Jl. Raya Hankam No. 1, Jaka Setia, Bekasi Timur, Bekasi, Jawa Barat. Jam buka: 08.00 - 22.00 
-        </p>
-        <div class="frame">
-          <img src="https://myvenue.id/wp-content/uploads/2021/01/Find-Out-Coffee-1.jpg" alt="img-desk">
-          <div class="caption">Find Out Coffee.</div>
-        </div>
-        <br>
-        <!-- 6 -->
-        <h3>6. Dyamond Caffe & Resto</h3>
-        <p>
-          Tempat makan yang menawarkan berbagai menu resto andalan. Alamat: Jl. Raya Hankam No. 1, Jaka Setia, Bekasi Timur, Bekasi, Jawa Barat. Jam buka: 08.00 - 22.00
-        </p>
-        <!-- 7 -->
-        <h3>7. Miss Unicorn Café</h3>
-        <p>
-          Tempat kopi yang menawarkan suasana yang cozy dan instagramable. Alamat: Jl. Raya Hankam No. 1, Jaka Setia, Bekasi Timur, Bekasi, Jawa Barat. Jam buka: 08.00 - 22.00
-        </p>
-        <!-- 8 -->
-        <h3>8. Mie Gacoan Bekasi Timur</h3>
-        <p> 
-          Tempat Makan mie pedas dengan suasana estetik. Alamat: Jl. IR. H. Juanda No. 93, Bekasi Timur, Bekasi, Jawa Barat. Jam buka: 24 jam
-        </p>
-        <!-- 9 -->
-        <h3>9. Transpark Juanda Bekasi</h3>
-        <p> 
-          Hunian impian untuk kaum urban di Bekasi Timur. Setiap unit apartemen mempunyai desain 3C: comfy, cozy and convenience. Suasana nyaman dan tidak membosankan. Alamat: Jl Ir H Juanda No 180, Kelurahan Margahayu, Kecamatan Bekasi Timur, Kota Bekasi, Jawa Barat 17113
-        </p>
-        <!-- 10 -->
-        <h3>10. Alun alun Kota Bekasi</h3>
-        <p> 
-          Tempat wisata dan bermain, cocok untuk acara kumpul bersama dan tersedia berbagai aneka kuliner.  Alamat: Jl. Pramuka No.59, RT.006/RW.006, Marga Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17141
-        </p>
-      </article>
+    <!-- Desktop -->
+    <main class="desktop">
+      <section class="desktop-icons" id="desktopIcons" aria-label="Pintasan 10 tempat instagramable"></section>
 
-      <!-- FOTO ASIDE -->
-    
-      <aside>
-        <h2>FOTO - FOTO LOKASI</h2>
-        <img src="https://cdn1-production-images-kly.akamaized.net/KNxNF6OCrHF-QKiuSAVzz7WRgHQ=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4084338/original/066963800_1657460159-FOTO.jpg" alt="img-desk"></img>
-        <center><span>Piramida Terbalik Summarecon</span></center>
-        <br>
-        <img src="https://o-cdn-cas.sirclocdn.com/parenting/images/73455951_2475069276152188_2251938.width-800.format-webp.webp" alt="img-desk"></img>
-        <center><span>Rainbow Garden</span></center>
-        <br>
-        <img src="https://asset.kompas.com/crop/0x73:1000x573/780x390/data/photo/2018/01/05/2275307534.JPG" alt="img-desk"></img>
-        <center><span>Curug Parigi</span></center>
-        <br>
-        <img src="https://lh3.googleusercontent.com/p/AF1QipN6BQmAO5Jcs6GsKSXaaFQ3dD5i5VKUXDeWuIhl=s1600-h380" alt="img-desk"></img>
-        <center><span>Dyamond Caffe & Resto</span></center>
-        <br>
-        <img src="https://assets-pergikuliner.com/Jv8qNUZrvo8oR9cyvdj0vMCQQe0=/fit-in/1366x768/smart/filters:no_upscale()/https://assets-pergikuliner.com/uploads/image/picture/2984758/picture-1690254105.jpg" alt="img-desk"></img>
-        <center><span>Mie Gacoan Bekasi Timur</span></center>
-        <br>
-        <img src="https://picture.rumah123.com/r123/1620x1080-fit/primary_property/project/1765/1663210391_background_1765.jpg?noWatermark" alt="img-desk"></img>
-        <center><span>Transpark Juanda Bekasi</span></center>
-        <br>
-        <img src="https://images.bisnis.com/posts/2022/02/21/1502972/alun2-0.jpg" alt="img-desk"></img>
-        <center><span>Alun Alun Kota Bekasi</span></center>
-      </aside>
+      <section class="welcome" aria-labelledby="welcomeTitle">
+        <span class="pill"><span class="pulse-dot" aria-hidden="true"></span>Edisi Bekasi · 2023</span>
+        <h1 id="welcomeTitle">10 Tempat <em>Instagramable</em> di Bekasi</h1>
+        <p class="welcome-desc">
+          Dari taman bunga sampai pantai muara. Buka tiap ikon untuk melihat foto,
+          alamat, jam buka, dan harga tiket — semuanya dalam satu jendela.
+        </p>
+        <div class="welcome-actions">
+          <button class="btn btn-primary" type="button" data-action="open-first">
+            <span>Mulai jelajah</span><span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="btn btn-ghost" type="button" data-action="random">
+            <span aria-hidden="true">✦</span> Acak tempat
+          </button>
+        </div>
+        <div class="welcome-foot">
+          <span class="hint-icon" aria-hidden="true">✦</span>
+          <span>Klik ikon di desktop atau dock untuk membuka info tempat.</span>
+        </div>
+        <p class="credit">Ganes Yudha Kusuma © 2023</p>
+      </section>
     </main>
 
-    <footer>
-      <p>Ganes Yudha Kusuma &copy; 2023</p>
+    <!-- Dock / taskbar -->
+    <footer class="dock-wrap">
+      <div class="dock" id="dock" role="toolbar" aria-label="Dock 10 tempat instagramable"></div>
     </footer>
+
+    <!-- Jendela aplikasi -->
+    <div class="window-layer" id="windowLayer"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Template jendela -->
+    <template id="appWindowTemplate">
+      <section class="window" role="dialog" aria-modal="false" aria-label="Bekasi Explorer">
+        <header class="window-titlebar" data-drag>
+          <div class="traffic">
+            <button type="button" class="dot dot-close" data-win="close" aria-label="Tutup jendela"></button>
+            <button type="button" class="dot dot-min" data-win="minimize" aria-label="Perkecil jendela"></button>
+            <button type="button" class="dot dot-max" data-win="maximize" aria-label="Perbesar jendela"></button>
+          </div>
+
+          <div class="titlebar-title">
+            <span class="app-mark" aria-hidden="true"></span>
+            <span class="win-title-text">Bekasi Explorer</span>
+          </div>
+
+          <div class="win-actions">
+            <button type="button" class="win-btn" data-win="minimize" aria-label="Perkecil">
+              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6h7" /></svg>
+            </button>
+            <button type="button" class="win-btn" data-win="maximize" aria-label="Perbesar">
+              <svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2.5" width="7" height="7" rx="1" /></svg>
+            </button>
+            <button type="button" class="win-btn win-btn-close" data-win="close" aria-label="Tutup">
+              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="window-body">
+          <aside class="app-sidebar">
+            <div class="sidebar-head">
+              <div>
+                <p class="sidebar-eyebrow">Koleksi</p>
+                <h2 class="sidebar-title">Tempat Instagramable</h2>
+              </div>
+              <span class="count-badge">10</span>
+            </div>
+
+            <label class="search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="m16 16 4.5 4.5" />
+              </svg>
+              <input id="placeSearch" type="search" placeholder="Cari tempat, kategori…" autocomplete="off" />
+            </label>
+
+            <div class="place-list" id="placeList"></div>
+            <p class="place-empty" id="placeEmpty" hidden>Tidak ada tempat yang cocok.</p>
+
+            <div class="sidebar-foot">
+              <span class="foot-dot" aria-hidden="true"></span>
+              <span>Bekasi, Jawa Barat</span>
+              <span class="keys" aria-hidden="true"><kbd>←</kbd><kbd>→</kbd></span>
+            </div>
+          </aside>
+
+          <main class="app-detail" id="placeDetail" tabindex="-1"></main>
+        </div>
+      </section>
+    </template>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
